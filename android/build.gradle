@@ -2,53 +2,38 @@ group 'zhuoyuan.li.fluttershareme'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.9.22'
-    
     repositories {
         google()
-        mavenCentral()  // jcenter() 대신 mavenCentral() 사용
+        jcenter()
+        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.3.0'  // gradle 버전 업데이트
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:3.2.1'
     }
 }
 
 rootProject.allprojects {
     repositories {
         google()
-        mavenCentral()  // jcenter() 대신 mavenCentral() 사용
+        jcenter()
     }
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'  // Kotlin 지원 추가
 
 android {
-    compileSdkVersion 33  // SDK 버전 업데이트
-    
+    compileSdkVersion 28
+
     defaultConfig {
-        minSdkVersion 21  // 최소 SDK 버전 업데이트
-        targetSdkVersion 33  // 타겟 SDK 버전 추가
+        minSdkVersion 16
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    
     lintOptions {
         disable 'InvalidPackage'
     }
 }
 
 dependencies {
-    implementation 'com.facebook.android:facebook-share:16.3.0'  // Facebook SDK 버전 업데이트
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'com.facebook.android:facebook-share:5.15.3'
 }
